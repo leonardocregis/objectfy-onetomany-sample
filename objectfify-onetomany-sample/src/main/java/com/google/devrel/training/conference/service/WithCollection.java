@@ -10,7 +10,7 @@ import com.googlecode.objectify.annotation.Index;
 
 
 @Entity
-class WithCollection {
+public class WithCollection {
 	@Id
 	public Long id;
 

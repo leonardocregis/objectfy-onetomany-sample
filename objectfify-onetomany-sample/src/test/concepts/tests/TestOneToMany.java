@@ -7,11 +7,14 @@ import static org.junit.Assert.assertNotNull;
 import java.util.Iterator;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import com.google.appengine.tools.development.testing.LocalDatastoreServiceTestConfig;
 import com.google.appengine.tools.development.testing.LocalServiceTestHelper;
 import com.googlecode.objectify.Key;
 
+import com.google.devrel.training.conference.service.Inside;
+import com.google.devrel.training.conference.service.WithCollection;
 
 public class TestOneToMany {
 
@@ -31,7 +34,7 @@ public class TestOneToMany {
 	}
 
 	/** */
-	@org.junit.Test
+	@Test
 	public void queryForStringInList() throws Exception {
 		ofy().factory().register(WithCollection.class);
 		ofy().factory().register(Inside.class);
@@ -62,13 +65,13 @@ public class TestOneToMany {
 		Key<WithCollection> withCollectionKey = Key.create(WithCollection.class,wcId);
 		assertEquals(keyWc, withCollectionKey);
 		
-		System.out.println(in.toString());
-		System.out.println(wc.toString());
 		Iterable<WithCollection> list = ofy().load().type(WithCollection.class).filter("beum", TESTE).list();
-		
+
 		Iterator<WithCollection> it = list.iterator();
-		assertNotNull(it.hasNext());
+		assertEquals(it.hasNext(), true);
+		System.out.println(it.hasNext());
 		WithCollection aux = it.next();
+		System.out.println("result ="+aux);
 		assertNotNull(aux);
 		
 		list = ofy().load().type(WithCollection.class).filter("stuff", in).list();
