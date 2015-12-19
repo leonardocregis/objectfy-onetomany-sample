@@ -27,7 +27,7 @@ public class TestOneToMany {
 
 		if (helper == null) {
 			LocalDatastoreServiceTestConfig localDatastoreService = new LocalDatastoreServiceTestConfig();
-			localDatastoreService.setDefaultHighRepJobPolicyUnappliedJobPercentage(100);
+			localDatastoreService.setApplyAllHighRepJobPolicy();
 			helper = new LocalServiceTestHelper(localDatastoreService);
 		}
 		helper.setUp();
